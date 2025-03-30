@@ -72,10 +72,18 @@ Use MySQL Workbench, DBeaver, or CLI to execute:
 If you're using migrations, run:
 
 ```bash
-npx typeorm migration:run
+npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/config/db.ts
 ```
 
-> Make sure your `ormconfig` or `data-source.ts` is correctly configured.
+> Make sure `synchronize` is set to `false` and your entities/migrations paths are correctly configured in `AppDataSource`.
+
+✅ The project also supports automatic migration application on app startup with:
+
+```ts
+migrationsRun: true
+```
+
+in your `AppDataSource` config (already enabled).
 
 ---
 

@@ -1,29 +1,45 @@
-// src/entities/User.ts
-
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Ticket } from './Ticket';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 /**
- * Represents a public user or ticket purchaser.
+ * User entity representing public users of the booking system.
  */
 @Entity()
 export class User {
+  /** Auto-incremented user ID */
   @PrimaryGeneratedColumn()
   id!: number;
 
+  /** Unique user email used for login */
   @Column({ unique: true })
-  email!: string; // User's unique email
+  email!: string;
 
+  /** Hashed password */
   @Column()
-  passwordHash!: string; // Hashed password
+  password!: string;
 
-  @Column()
-  fullName!: string;
+  /** User role: 'user' or 'admin' */
+  @Column({ default: 'user' })
+  role!: 'user' | 'admin';
 
-  @Column()
-  isAdmin!: boolean; // Distinguishes regular users from admins
+  /** User display name */
+  @Column({ nullable: true })
+  name?: string;
 
-  @OneToMany(() => Ticket, (ticket) => ticket.buyer)
-  tickets!: Ticket[];
+  /** Profile picture (avatar) URL */
+  @Column({ nullable: true })
+  avatar?: string;
+
+  /** Timestamp of registration */
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  /** Timestamp of last update */
+  @UpdateDateColumn()
+  updatedAt!: Date;
 }
-

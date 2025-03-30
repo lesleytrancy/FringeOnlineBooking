@@ -8,9 +8,11 @@
   "forceConsistentCasingInFileNames": true,
   "strict": true,
   "skipLibCheck": true,
-  "baseUrl": "./",
+  "baseUrl": "./src",
   "paths": {
-    "*": ["src/*"]
+    "config/*": ["config/*"],
+    "entities/*": ["entities/*"],
+    "utils/*": ["utils/*"]
   }
   },
   "include": ["src/**/*"]

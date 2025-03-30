@@ -16,8 +16,22 @@ const options: swaggerJsdoc.Options = {
         url: 'http://localhost:3000/api',
       },
     ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT', // Optional: just for display
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [], // Apply globally unless overridden
+      },
+    ],
   },
-  apis: ['./src/routes.ts', './src/controllers/**/*.ts'],
+  apis: ['./src/routes.ts', './src/controllers/**/*.ts'], // Make sure path is correct!
 };
 
 export const swaggerSpec = swaggerJsdoc(options);

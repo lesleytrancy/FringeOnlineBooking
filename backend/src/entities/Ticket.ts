@@ -36,7 +36,6 @@ export class Ticket {
   @Column()
   isSold!: boolean; // Indicates if ticket has been purchased
 
-  @ManyToOne(() => User, (user) => user.tickets, { nullable: true })
-  buyer?: User; // The user who bought the ticket
+  buyer?: number; // The user who bought the ticket
 }
 

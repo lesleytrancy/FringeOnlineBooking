@@ -1,8 +1,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import path from 'path';
-
-console.log(process.env.DB_HOST);
+import 'dotenv/config';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',

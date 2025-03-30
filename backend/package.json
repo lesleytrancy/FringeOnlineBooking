@@ -16,6 +16,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.1.0",
+    "mime": "^4.0.6",
     "mysql2": "^3.14.0",
     "redis": "^4.7.0",
     "reflect-metadata": "^0.2.2",

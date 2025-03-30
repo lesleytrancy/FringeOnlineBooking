@@ -12,15 +12,22 @@
     a { text-decoration: none; color: #007bff; }
   </style>
 </head>
-<body style="user-select: none;">
-  <h1>🎉 Fringe 2025 API is Running</h1>
-  <div class="status {{mysqlStatusClass}}"><strong>MySQL:</strong> {{mysqlStatus}}</div>
-  <div class="status {{redisStatusClass}}"><strong>Redis:</strong> {{redisStatus}}</div>
-  <div class="status"><strong>CPU:</strong> {{cpuUsage}}%</div>
-  <div class="status"><strong>Memory:</strong> {{memoryUsage}}</div>
-  <div class="footer">
-    ⏱ Updated at {{time}} |
-    📄 <a href="/api-docs" target="_blank">View Swagger API Docs</a>
+<body style="margin: 0; user-select: none; height: 100vh;overflow: hidden;  display: flex; justify-content: center; align-items: center; background-color: #f8f9fa; font-family: sans-serif;">
+  <div style="
+    width: 480px;
+    padding: 24px;
+  ">
+    <h1>🎉 Fringe 2025 API is Running</h1>
+    <div class="status {{mysqlStatusClass}}"><strong>MySQL:</strong> {{mysqlStatus}}</div>
+    <div class="status {{redisStatusClass}}"><strong>Redis:</strong> {{redisStatus}}</div>
+    <div class="status"><strong>CPU:</strong> {{cpuUsage}}%</div>
+    <div class="status"><strong>Memory:</strong> {{memoryUsage}}</div>
+    <div class="footer">
+      ⏱ Updated at {{time}} |
+      📄 <a href="/api-docs" target="_blank">View Swagger API Docs</a>
+    </div>
   </div>
+  <script nonce="123456">
+    </script>
 </body>
 </html>

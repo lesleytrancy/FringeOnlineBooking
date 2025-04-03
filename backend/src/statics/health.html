@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fringe 2025 API Status</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f7fa; padding: 20px; }
+    h1 { color: #2c3e50; }
+    .status { padding: 10px; margin-bottom: 10px; border-radius: 6px; }
+    .ok { background-color: #d4edda; color: #155724; }
+    .fail { background-color: #f8d7da; color: #721c24; }
+    .footer { margin-top: 30px; font-size: 0.9em; }
+    a { text-decoration: none; color: #007bff; }
+  </style>
+</head>
+<body style="margin: 0; user-select: none; height: 100vh;overflow: hidden;  display: flex; justify-content: center; align-items: center; background-color: #f8f9fa; font-family: sans-serif;">
+  <div style="
+    width: 480px;
+    padding: 24px;
+  ">
+    <h1>🎉 Fringe 2025 API is Running</h1>
+    <div class="status {{mysqlStatusClass}}"><strong>MySQL:</strong> {{mysqlStatus}}</div>
+    <div class="status {{redisStatusClass}}"><strong>Redis:</strong> {{redisStatus}}</div>
+    <div class="status"><strong>CPU:</strong> {{cpuUsage}}%</div>
+    <div class="status"><strong>Memory:</strong> {{memoryUsage}}</div>
+    <div class="footer">
+      ⏱ Updated at {{time}} |
+      📄 <a href="/api-docs" target="_blank">View Swagger API Docs</a>
+    </div>
+  </div>
+  <script nonce="123456">
+    </script>
+</body>
+</html>

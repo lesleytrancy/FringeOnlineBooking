@@ -7,6 +7,7 @@ import { AppDataSource } from './config/db';
 import { connectRedis, redisClient } from './config/redis';
 import path from 'path';
 import mime from 'mime';
+import { HealthController } from './controllers/HealthController';
 
 const app = express();
 
@@ -40,6 +41,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', router);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.get('/', HealthController.status);
 
 // 404 fallback
 app.use((req, res) => {

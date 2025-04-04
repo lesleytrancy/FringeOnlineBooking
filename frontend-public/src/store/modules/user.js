@@ -45,7 +45,8 @@ export default {
 }
 
 // Temporary mock functions
-async function fakeAuth(email, password) {
+async function fakeAuth(email, _password) {
+  console.log(_password);
   return {
     user: { email, name: 'Test User' },
     token: 'fake-jwt-token'

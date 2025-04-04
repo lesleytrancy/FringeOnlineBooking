@@ -252,7 +252,7 @@ import { mapActions, mapGetters } from 'vuex'
 import moment from 'moment'
 
 export default {
-  name: 'Profile',
+  name: 'ProfilePage',
   data() {
     return {
       editingPersonalInfo: false,

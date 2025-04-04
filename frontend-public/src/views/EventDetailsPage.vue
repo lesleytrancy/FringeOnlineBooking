@@ -178,7 +178,7 @@ export default {
       }
 
       const selected = Object.entries(this.selectedTickets)
-        .filter(([_, qty]) => qty > 0)
+        .filter(([, qty]) => qty > 0)
         .map(([ticketId, qty]) => ({
           ticketId,
           quantity: qty

@@ -48,7 +48,7 @@ import { mapActions, mapGetters } from 'vuex'
 import EventCard from '@/components/EventCard.vue'
 
 export default {
-  name: 'Home',
+  name: 'HomePage',
   components: {
     EventCard
   },

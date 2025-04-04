@@ -18,6 +18,7 @@ export const UserAuthController = {
       }
       else
       {
+        //TODO send email by email address, and  send the verification link inside.
         const hashed = await bcrypt.hash(password, 10);
         const user = userRepo.create({ email, password: hashed });
         await userRepo.save(user);

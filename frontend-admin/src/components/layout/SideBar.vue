@@ -38,29 +38,32 @@ const isActive = (path) => route.path.startsWith(path)
 
 <style scoped>
 .sidebar {
-  width: 240px;
+  
+  width: 250px;
   background-color: #fff;
-  height: 100vh;
   border-right: 1px solid #eee;
-  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
+.logo {
+  height: 70px;
+}
 
 .logo img {
-  width: 160px;
-  height: auto;
-  margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .nav-links {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
 }
 
 .nav-item {
+  width: 200px;
   display: flex;
   align-items: center;
   gap: 12px;

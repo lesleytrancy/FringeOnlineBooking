@@ -16,6 +16,7 @@ A full-stack ticket booking system for Adelaide Fringe 2025, supporting both adm
 ## 📁 Project Structure
 
 ```
+```
 FringeOnlineBookingSystem/
 │
 ├── backend/                                # Backend APIs and services

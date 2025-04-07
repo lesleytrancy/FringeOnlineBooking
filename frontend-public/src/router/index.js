@@ -36,6 +36,11 @@ const routes = [
     name: 'VerifyEmail',
     component: () => import('../views/VerifyEmail.vue'),
     props: route => ({ email: route.query.email, token: route.query.token })
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/NotFound.vue')
   }
 ]
 

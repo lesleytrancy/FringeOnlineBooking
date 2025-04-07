@@ -1,138 +1,108 @@
 <template>
-  <div class="event-card">
-    <div class="event-image">
-      <img :src="event.imageUrl || placeholderImage" :alt="event.name">
+  <div class="event-card" @click="goToEvent">
+    <!-- Image -->
+    <div class="image-wrapper">
+      <img :src="imageUrl" alt="Event Cover" class="event-image" />
+      <span v-if="isFree" class="free-badge">FREE</span>
     </div>
-    <div class="event-details">
-      <h3>{{ event.name }}</h3>
-      <div class="event-meta">
-        <span class="event-date">
-          <i class="fas fa-calendar-alt"></i>
-          {{ formatDate(event.date) }}
-        </span>
-        <span class="event-location">
-          <i class="fas fa-map-marker-alt"></i>
-          {{ event.location }}
-        </span>
-      </div>
-      <p class="event-description">{{ truncateDescription(event.description) }}</p>
-      <div class="event-footer">
-        <span class="event-price">From ${{ event.minPrice }}</span>
-        <router-link 
-          :to="`/events/${event.id}`" 
-          class="btn-secondary"
-        >
-          View Details
-        </router-link>
-      </div>
-    </div>
+
+    <!-- Title -->
+    <h3 class="event-title">
+      {{ title }}
+    </h3>
+
+    <!-- Time -->
+    <p class="event-time">
+      {{ time }}
+    </p>
+
+    <!-- Type -->
+    <p class="event-type">
+      {{ type }}
+    </p>
   </div>
 </template>
 
 <script>
-import placeholderImage from '@/assets/images/event-placeholder.jpg'
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
 
-export default {
+export default defineComponent({
   name: 'EventCard',
   props: {
-    event: {
-      type: Object,
-      required: true
-    }
+    id: { type: [String, Number], required: true },
+    imageUrl: { type: String, required: true },
+    title: { type: String, required: true },
+    time: { type: String, required: true },
+    type: { type: String, required: true },
+    isFree: { type: Boolean, default: false }
   },
-  data() {
-    return {
-      placeholderImage
+  setup(props) {
+    const router = useRouter()
+
+    const goToEvent = () => {
+      router.push(`/no/${props.id}`)
     }
-  },
-  methods: {
-    formatDate(dateString) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(dateString).toLocaleDateString(undefined, options)
-    },
-    truncateDescription(description) {
-      if (!description) return ''
-      return description.length > 100 
-        ? `${description.substring(0, 100)}...` 
-        : description
-    }
+
+    return { goToEvent }
   }
-}
+})
 </script>
 
 <style scoped>
 .event-card {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-family: 'ABeeZee', sans-serif;
 }
 
-.event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.event-image img {
+.image-wrapper {
+  position: relative;
   width: 100%;
   height: 200px;
+  overflow: hidden;
+}
+
+.event-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.event-details {
-  padding: 1.5rem;
-}
-
-.event-details h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  color: #2c3e50;
-}
-
-.event-meta {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.event-meta i {
-  margin-right: 0.3rem;
-}
-
-.event-description {
-  color: #555;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
-
-.event-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.event-price {
-  font-weight: bold;
-  color: #42b983;
-}
-
-.btn-secondary {
-  padding: 0.5rem 1rem;
-  background-color: white;
-  color: #42b983;
-  border: 1px solid #42b983;
+.free-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #eee5ff;
+  color: #8658dc;
+  font-size: 12px;
+  padding: 4px 8px;
   border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
   font-weight: 500;
-  transition: all 0.2s;
 }
 
-.btn-secondary:hover {
-  background-color: #42b983;
-  color: white;
+.event-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 12px 16px 6px;
+  color: #111;
+}
+
+.event-time {
+  font-size: 14px;
+  color: #7d41e1;
+  margin: 0 16px 4px;
+  font-weight: 500;
+}
+
+.event-type {
+  font-size: 13px;
+  color: #777;
+  margin: 0 16px 16px;
 }
 </style>

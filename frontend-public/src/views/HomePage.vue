@@ -1,56 +1,36 @@
 <template>
-  <div class="home">
-    <section class="hero">
-      <h1>Welcome to Fringe Online Booking</h1>
-      <p>Discover amazing events and performances</p>
-      <router-link to="/events" class="btn-primary">Browse Events</router-link>
-    </section>
-
-    <section class="featured-events">
-      <h2>Featured Events</h2>
-      <div class="events-grid">
-        <EventCard 
-          v-for="event in featuredEvents" 
-          :key="event.id" 
-          :event="event"
-          class="featured-event"
-        />
-      </div>
-    </section>
-
-    <section class="event-search">
-      <h2>Find Your Perfect Event</h2>
-      <div class="search-box">
-        <input 
-          type="text" 
-          placeholder="Search events..." 
-          v-model="searchQuery"
-          @keyup.enter="searchEvents"
-        >
-        <select v-model="selectedCategory">
-          <option value="">All Categories</option>
-          <option 
-            v-for="category in categories" 
-            :key="category" 
-            :value="category"
-          >
-            {{ category }}
-          </option>
-        </select>
-        <button @click="searchEvents" class="btn-primary">Search</button>
-      </div>
-    </section>
+  <div>
+    <PageHeader></PageHeader>
+    <HeroBanner></HeroBanner>
+    <Upcoming/>
+    <button class="floating-btn">
+      <img src="@/assets/icons/chat-icon.svg" alt="Chat" />
+    </button>
+    <DonateBannerVue/>
+    <BrandSectionVue/>
+    <FooterSectionVue/>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import EventCard from '@/components/EventCard.vue'
+// import EventCard from '@/components/EventCard.vue'
+import PageHeader from '@/components/PageHeader.vue'
+import HeroBanner from '@/components/HeroBanner.vue'
+import Upcoming from '@/components/UpcomingEventFilters.vue'
+import DonateBannerVue from '@/components/DonateBanner.vue'
+import BrandSectionVue from '../components/BrandSection.vue'
+import FooterSectionVue from '../components/FooterSection.vue'
 
 export default {
   name: 'HomePage',
   components: {
-    EventCard
+    PageHeader,
+    HeroBanner,
+    Upcoming,
+    DonateBannerVue,
+    BrandSectionVue,
+    FooterSectionVue
   },
   data() {
     return {
@@ -87,6 +67,30 @@ export default {
 .home {
   padding: 2rem 0;
 }
+
+.floating-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 0px;
+  background-color: #f25c94;
+  color: white;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-btn img {
+  width: 24px;
+  height: 24px;
+}
+
 
 .hero {
   text-align: center;

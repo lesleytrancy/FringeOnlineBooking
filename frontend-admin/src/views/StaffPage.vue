@@ -1,3 +1,3 @@
 <template>
-  <div>event</div>
+  <div>staff</div>
 </template>

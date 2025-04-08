@@ -29,7 +29,7 @@ const route = useRoute()
 const navItems = [
   { name: 'Dashboard', to: '/dashboard', icon: 'fas fa-th-large' },
   { name: 'Events', to: '/events', icon: 'fas fa-calendar' },
-  { name: 'Messages', to: '/messages', icon: 'fas fa-paper-plane' },
+  { name: 'Messages', to: '/msg', icon: 'fas fa-paper-plane' },
   { name: 'Staff', to: '/staff', icon: 'fas fa-user' }
 ]
 
@@ -37,14 +37,19 @@ const isActive = (path) => route.path.startsWith(path)
 </script>
 
 <style scoped>
-.sidebar {
-  
+.sidebar {  
   width: 250px;
+  height: 100vh;
+  flex-shrink: 0;
   background-color: #fff;
   border-right: 1px solid #eee;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  position: sticky; /* optional */
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 .logo {
   height: 70px;

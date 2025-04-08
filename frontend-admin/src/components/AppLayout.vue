@@ -23,8 +23,8 @@ import Topbar from '@/components/layout/TopBar.vue';
 <style scoped>
 .layout {
   display: flex;
-  min-height: 100vh;
-  background-color: #f9f9fb;
+  height: 100vh;
+  overflow: hidden; /* prevent outer scroll */
 }
 
 .main-panel {
@@ -35,8 +35,15 @@ import Topbar from '@/components/layout/TopBar.vue';
 }
 
 .main-content {
-  padding: 24px;
   flex: 1;
   overflow-y: auto;
+  padding: 24px;
+  background: #F8F8FA;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
 }
-</style>@/components/layout/TopBar.vue
+
+.main-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+</style>

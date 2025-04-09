@@ -1,7 +1,7 @@
 <template>
   <section class="donate-banner">
     <div class="donate-image">
-      <img src="https://d2cudhp9dwbqkd.cloudfront.net/release-20250307/assets/arts-unlimited/donation-banner-9f9aa34c.jpeg" alt="Donate to Arts Unlimited" />
+      <img src="@/assets/images/donate banner.jpg" alt="Donate to Arts Unlimited" />
     </div>
     <div class="donate-content">
       <h2>Donate to Arts Unlimited</h2>

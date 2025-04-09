@@ -37,14 +37,32 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Mount the main router
+
+// 1️⃣ 静态资源必须优先
+app.use('/admin', express.static(path.join(__dirname, '../../frontend-admin/dist')));
+app.use('/usr', express.static(path.join(__dirname, '../../frontend-public/dist')));
+app.use('/', express.static(path.join(__dirname, '../../frontend-public/dist')));
+
+// 2️⃣ API 路由
 app.use('/api', router);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.get('/', HealthController.status);
+// 3️⃣ SPA 路由 fallback：只处理浏览器直输路径，如 /usr/events，而不是 /js/xxx
+app.get('/admin/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend-admin/dist/index.html'));
+});
 
-// 404 fallback
+app.get('/usr/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend-public/dist/index.html'));
+});
+
+// // 可选：根目录 fallback
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend-public/dist/index.html'));
+});
+
+// 4️⃣ 最后的 404 fallback
 app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
